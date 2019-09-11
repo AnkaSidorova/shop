@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">			
 		<?php foreach($latestProducts as $product): ?>
-		<div class="col col-sm-6 col-md-3 mb-4">
+		<div class="col col-sm-6 col-md-4 col-lg-3 mb-4">
 			<div class="card">
 				<a href="/product/<?php echo $product['id']?>">
 					<img src="/template/img/her.jpg" class="card-img-top" alt="">

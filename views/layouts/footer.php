@@ -16,7 +16,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col col-sm-6 col-md-3 mb-4">
+				<div class="col col-sm-6 col-lg-3 mb-4">
 					<div class="card text-center">
 						<div class="card-body name_shop">
 							<img src="template/img/shopping-bag.png" alt="">
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col col-sm-6 col-md-3 mb-4">
+				<div class="col col-sm-6 col-lg-3 mb-4">
 					<div class="card text-center">
 						<div class="card-body name_shop">
 							<img src="template/img/shopping-bag.png" alt="">
@@ -34,7 +34,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col col-sm-6 col-md-3 mb-4">
+				<div class="col col-sm-6 col-lg-3 mb-4">
 					<div class="card text-center">
 						<div class="card-body name_shop">
 							<img src="template/img/shopping-bag.png" alt="">
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col col-sm-6 col-md-3 mb-4">
+				<div class="col col-sm-6 col-lg-3 mb-4">
 					<div class="card text-center">
 						<div class="card-body name_shop">
 							<img src="template/img/shopping-bag.png" alt="">

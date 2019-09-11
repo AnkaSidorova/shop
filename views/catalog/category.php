@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
       <?php foreach ($categoryProducts as $product): ?>
-				<div class="col col-sm-6 col-md-4 mb-4">
+				<div class="col col-sm-6 col-md-4 col-lg-3 mb-4">
 					<div class="card">
 						<a href="/product/<?php echo $product['id'] ?>">
 							<img src="/template/img/her.jpg" class="card-img-top" alt="xxx">
@@ -12,7 +12,7 @@
 							<h5 class="text-dark"><?php echo $product['name'] ?></h5>
 							<hr>
 							<p class="text-secondary"><?php echo $product['price'] ?> руб.</p>
-							<button type="button" class="btn btn-dark">В корзину</button>
+							<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark">В корзину</a>
 						</div>
 					</div>
 				</div>

@@ -31,7 +31,9 @@
 		</div>
 		<div class="col-lg-4">
 			<div class="basket_shop pt-3">
-				<a href="/basket/" class="href_style">Корзина</a>
+				<a href="/cart/" class="href_style">Корзина
+					<span id="cart-count">(<?php echo Cart::countItems(); ?>)</span>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -61,16 +63,15 @@
 
 <div class="container">
 	<div class="row pb-sm-3">
-		<div class="col">		
+		<div class="col">
 			<ul class="nav justify-content-center">
-          <?php foreach ($categories as $categoryItem) :?>
-	          <li class="nav-item">
-		          <a class="nav-link font-weight-bold page_site" 
-		             href="/category/<?php echo $categoryItem['id'];?>">
-				          <?php echo $categoryItem['name'];?>
-		          </a>
-	          </li>
-          <?php endforeach;?>				
+          <?php foreach ($categories as $categoryItem) : ?>
+						<li class="nav-item">
+							<a class="nav-link font-weight-bold page_site" href="/category/<?php echo $categoryItem['id']; ?>">
+                  <?php echo $categoryItem['name']; ?>
+							</a>
+						</li>
+          <?php endforeach; ?>
 			</ul>
 		</div>
 	</div>

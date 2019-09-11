@@ -7,9 +7,11 @@
 class Pagination
 {
 
-    
-    // Ссылок навигации на страницу
-     
+    /**
+     *
+     * @var Ссылок навигации на страницу
+     *
+     */
     private $max = 10;
 
     /**
@@ -17,7 +19,7 @@ class Pagination
      * @var Ключ для GET, в который пишется номер страницы
      *
      */
-    private $index = '';
+    private $index = 'page';
 
     /**
      *

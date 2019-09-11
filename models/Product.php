@@ -38,7 +38,7 @@ class Product
             $products = array();
             $result = $db->query("SELECT id, name, price, img FROM product "
                 . "WHERE status = 'active' AND category_id = '$categoryId'"
-                . "LIMIT ".self::SHOW_BY_DEFAULT
+                . 'LIMIT '.self::SHOW_BY_DEFAULT
                 . ' OFFSET '.$offset);
 
             $i = 0;

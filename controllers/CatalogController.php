@@ -1,9 +1,5 @@
 <?php
 
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Product.php';
-include_once ROOT . '/components/Pagination.php';
-
 class CatalogController
 {
     //каталог - основная страница с товарами
@@ -22,7 +18,6 @@ class CatalogController
     
     public function actionCategory($categoryId, $page = 1)
     {
-               
         //для вывода категорий товаров
         $categories = Category::getCategoriesList();
 

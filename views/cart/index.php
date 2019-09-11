@@ -18,7 +18,7 @@
 					<div class="card mb-3">
 						<div class="row no-gutters">
 							<div class="col-md-4">
-								<img src="template/img/her.jpg" class="card-img" alt="">
+								<img src="../../template/img/her.jpg" class="card-img" alt="">
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
@@ -34,7 +34,7 @@
 					<div class="card mb-3">
 						<div class="row no-gutters">
 							<div class="col-md-4">
-								<img src="template/img/her.jpg" class="card-img" alt="">
+								<img src="../../template/img/her.jpg" class="card-img" alt="">
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
