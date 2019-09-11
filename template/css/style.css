@@ -1,0 +1,112 @@
+form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
+}
+
+.basket_shop {
+    float: right;
+}
+
+.href_style {
+    color: gray;
+    font-style: italic;
+}
+
+.href_style:hover {
+    color: red;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.name_shop {
+    color: black;
+}
+
+.name_shop:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.page_site {
+    color: black;
+}
+
+.page_site:hover {
+    color: white;
+    background: black;
+}
+
+.link_page_site {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.link_page_site a {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    transition: 300ms ease;
+}
+
+.link_page_site a:hover {
+    transition: 300ms ease;
+    color: red;
+    text-decoration: none;
+}
+
+.page_block_img {
+    height: 180px;
+    overflow: hidden;
+}
+
+.m-b-t {
+    margin: 20px 0 20px 0;
+}
+
+.footer {
+    height: 50px;
+    background: #343a40;
+    color: white;
+}
+
+.card-img-top {
+    height: 200px;
+}
+
+.copyrate {
+    padding: 15px 0 0 15px;
+    font-size: 12px;
+}
+
+
+.modal {
+    display: none;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    overflow: auto;
+}
+
+.modal-content {
+    animation-name: animate;
+    animation-duration: 0.5s;
+}
+
+@keyframes animate {
+    from {
+        top: -320px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.close {
+    font-size: 30px;
+    font-weight: bold;
+}
