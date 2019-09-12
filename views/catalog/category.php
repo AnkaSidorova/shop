@@ -12,7 +12,7 @@
 							<h5 class="text-dark"><?php echo $product['name'] ?></h5>
 							<hr>
 							<p class="text-secondary"><?php echo $product['price'] ?> руб.</p>
-							<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark">В корзину</a>
+							<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark"  data-id="<?php echo $product['id']; ?>">В корзину</a>						
 						</div>
 					</div>
 				</div>

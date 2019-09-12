@@ -68,6 +68,7 @@ class Product
         }
     }
     
+    //получение числа товаров в определенной категории
     public static function getTotalProductsInCategory($categoryId){
         $db = Db::getConnection();
         $result = $db->query('SELECT count(id) AS count FROM product '
@@ -76,6 +77,53 @@ class Product
         $row = $result->fetch();
         
         return $row['count'];
+    }
+
+    //получение продуктов с id 
+    public static function getProductsByIds($idsArray)
+    {
+        $products = array();
+
+        $db = Db::getConnection();
+
+        $idsString = implode(',', $idsArray);
+
+        $sql = "SELECT * FROM product WHERE status='active' AND id IN ($idsString)";
+
+        $result = $db->query($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $i++;
+        }
+
+        return $products;
+    }
+
+    public static function getRecommendedProducts()
+    {
+        $db = Db::getConnection();
+
+        $productsList = array();
+
+        $result = $db->query('SELECT id, name, price, img FROM product '
+            . 'WHERE status = "active" AND recommended = "1"');
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['img'] = $row['img'];
+            $productsList[$i]['price'] = $row['price'];
+            $i++;
+        }
+
+        return $productsList;
     }
 }
 

@@ -30,7 +30,7 @@
 					<a class="dropdown-item" href="#">Синий</a>
 				</div>
 			</div>
-			<button type="button" class="btn btn-dark">Купить</button>
+			<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark"  data-id="<?php echo $product['id']; ?>">Купить</a>
 		</div>
 	</div>
 </div>
@@ -41,6 +41,7 @@
 			<div class="m-b-t text-dark text-center font-weight-bold">ПОХОЖИЕ ТОВАРЫ</div>
 			<hr>
 			<div class="row">
+				<?php foreach ($sliderProducts as $product): ?>
 				<div class="card-deck">
 					<div class="col-sm-6 col-md-3 mb-4">
 						<div class="card">
@@ -48,8 +49,8 @@
 								<img src="/template/img/his.jpg" class="card-img-top" alt="">
 							</a>
 							<div class="card-body">
-								<h5 class="card-title">Платье</h5>
-								<p class="card-text">1 200 руб.</p>
+								<h5 class="card-title"><?php echo $product['name']; ?></h5>
+								<p class="card-text"><?php echo $product['price']; ?> руб.</p>
 							</div>
 						</div>
 					</div>
@@ -87,6 +88,7 @@
 						</div>
 					</div>
 				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>

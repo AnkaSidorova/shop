@@ -16,20 +16,20 @@
 
 <div class="container main_block">
 	<div class="row">
-		<div class="col-lg-4">
+		<div class="col-4">
 			<div class="pt-3">
 				<a href="" class="href_style">Вход</a>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-4">
 			<div class="pt-5 text-center">
-				<a href="" class="name_shop">
+				<a href="/" class="name_shop">
 					<img src="/template/img/shopping-bag.png" alt="логотип">
 					<p>D I E S E L</p>
 				</a>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-4 float-right">
 			<div class="basket_shop pt-3">
 				<a href="/cart/" class="href_style">Корзина
 					<span id="cart-count">(<?php echo Cart::countItems(); ?>)</span>
@@ -50,7 +50,7 @@
 					<a class="nav-link href_style" href="/catalog/">Каталог</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link href_style" href="#">О компании</a>
+					<a class="nav-link href_style" href="/delivery/">Доставка</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link href_style" href="#">Контакты</a>
