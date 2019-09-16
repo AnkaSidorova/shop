@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-4">
 			<div class="pt-3">
-				<a href="" class="href_style">Вход</a>
+				<a href="/user/login/" class="href_style">Вход</a>
 			</div>
 		</div>
 		<div class="col-4">

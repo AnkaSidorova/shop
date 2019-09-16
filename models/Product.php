@@ -6,24 +6,31 @@ class Product
     
     //получение последних товаров из бд
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT){
-        
-        $count = (int)$count;        
-        $db = Db::getConnection();        
-        $productList = array();
-        
-        $result = $db->query('SELECT id, name, price, img FROM product ' 
-            . 'WHERE status = "active" ' . 'LIMIT '. $count);
-        
-        $i=0;
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-            $productList[$i]['id'] = $row['id'];
-            $productList[$i]['name'] = $row['name'];
-            $productList[$i]['price'] = $row['price'];            
-            $productList[$i]['img'] = $row['img'];
+
+        // Соединение с БД
+        $db = Db::getConnection();
+        // Текст запроса к БД
+        $sql = 'SELECT id, name, price FROM product '
+            . 'WHERE status = "active" ORDER BY id DESC '
+            . 'LIMIT :count';
+        // Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':count', $count, PDO::PARAM_INT);
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        // Выполнение коменды
+        $result->execute();
+        // Получение и возврат результатов
+        $i = 0;
+        $productsList = array();
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['price'] = $row['price'];
             $i++;
         }
-        
-        return $productList;
+        return $productsList;
     }
 
     //получение товаров по категории
@@ -36,7 +43,7 @@ class Product
 
             $db = Db::getConnection();
             $products = array();
-            $result = $db->query("SELECT id, name, price, img FROM product "
+            $result = $db->query('SELECT id, name, price, img FROM product '
                 . "WHERE status = 'active' AND category_id = '$categoryId'"
                 . 'LIMIT '.self::SHOW_BY_DEFAULT
                 . ' OFFSET '.$offset);
@@ -56,21 +63,25 @@ class Product
     //получение товаров по id товара(карточка товара)
     public static function getProductById($id)
     {
-        $id = (int)$id;
-
-        if ($id) {
-            $db = Db::getConnection();
-
-            $result = $db->query("SELECT * FROM product WHERE id='$id'");
-            $result->setFetchMode(PDO::FETCH_ASSOC);
-
-            return $result->fetch();
-        }
+        $db = Db::getConnection();
+        
+        $sql = 'SELECT * FROM product WHERE id = :id';
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        
+        $result->execute();
+        
+        return $result->fetch();
     }
     
     //получение числа товаров в определенной категории
     public static function getTotalProductsInCategory($categoryId){
+        
         $db = Db::getConnection();
+        
         $result = $db->query('SELECT count(id) AS count FROM product '
         . 'WHERE status="1" AND category_id="'.$categoryId.'"');
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -104,7 +115,9 @@ class Product
 
         return $products;
     }
-
+    
+    
+    // рекомендованные товары
     public static function getRecommendedProducts()
     {
         $db = Db::getConnection();
@@ -124,6 +137,37 @@ class Product
         }
 
         return $productsList;
+    }
+
+    // полный список товаров
+    public static function getProductsList()
+    {        
+        $db = Db::getConnection();
+        
+        $result = $db->query('SELECT id, name, code, price FROM product');
+        $productsList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['code'] = $row['code'];
+            $productsList[$i]['price'] = $row['price'];
+            $i++;
+        }
+        return $productsList;
+    }
+    
+    // удаление товара
+    public static function deleteProductById($id)
+    {
+
+        $db = Db::getConnection();
+        
+        $sql = 'DELETE FROM product WHERE id = :id';        
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
     }
 }
 

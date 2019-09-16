@@ -35,63 +35,63 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<div class="col">
-			<div class="m-b-t text-dark text-center font-weight-bold">ПОХОЖИЕ ТОВАРЫ</div>
-			<hr>
-			<div class="row">
-				<?php foreach ($sliderProducts as $product): ?>
-				<div class="card-deck">
-					<div class="col-sm-6 col-md-3 mb-4">
-						<div class="card">
-							<a href="card.php">
-								<img src="/template/img/his.jpg" class="card-img-top" alt="">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title"><?php echo $product['name']; ?></h5>
-								<p class="card-text"><?php echo $product['price']; ?> руб.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-3 mb-4">
-						<div class="card">
-							<a href="card.php">
-								<img src="/template/img/his.jpg" class="card-img-top" alt="">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">Платье</h5>
-								<p class="card-text">1 200 руб.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-3 mb-4">
-						<div class="card">
-							<a href="card.php">
-								<img src="/template/img/his.jpg" class="card-img-top" alt="">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">Платье</h5>
-								<p class="card-text">1 200 руб.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-3 mb-4">
-						<div class="card">
-							<a href="card.php">
-								<img src="/template/img/his.jpg" class="card-img-top" alt="">
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">Платье</h5>
-								<p class="card-text">1 200 руб.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</div>
-</div>
+<!--<div class="container">-->
+<!--	<div class="row">-->
+<!--		<div class="col">-->
+<!--			<div class="m-b-t text-dark text-center font-weight-bold">ПОХОЖИЕ ТОВАРЫ</div>-->
+<!--			<hr>-->
+<!--			<div class="row">-->
+<!--				--><?php //foreach ($sliderProducts as $product): ?>
+<!--				<div class="card-deck">-->
+<!--					<div class="col-sm-6 col-md-3 mb-4">-->
+<!--						<div class="card">-->
+<!--							<a href="card.php">-->
+<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
+<!--							</a>-->
+<!--							<div class="card-body">-->
+<!--								<h5 class="card-title">--><?php //echo $product['name']; ?><!--</h5>-->
+<!--								<p class="card-text">--><?php //echo $product['price']; ?><!-- руб.</p>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="col-sm-6 col-md-3 mb-4">-->
+<!--						<div class="card">-->
+<!--							<a href="card.php">-->
+<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
+<!--							</a>-->
+<!--							<div class="card-body">-->
+<!--								<h5 class="card-title">Платье</h5>-->
+<!--								<p class="card-text">1 200 руб.</p>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="col-sm-6 col-md-3 mb-4">-->
+<!--						<div class="card">-->
+<!--							<a href="card.php">-->
+<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
+<!--							</a>-->
+<!--							<div class="card-body">-->
+<!--								<h5 class="card-title">Платье</h5>-->
+<!--								<p class="card-text">1 200 руб.</p>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="col-sm-6 col-md-3 mb-4">-->
+<!--						<div class="card">-->
+<!--							<a href="card.php">-->
+<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
+<!--							</a>-->
+<!--							<div class="card-body">-->
+<!--								<h5 class="card-title">Платье</h5>-->
+<!--								<p class="card-text">1 200 руб.</p>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				--><?php //endforeach; ?>
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

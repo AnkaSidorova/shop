@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class Cart
 {
     //добавление товара в корзину
@@ -25,18 +23,30 @@ class Cart
 
         return self::countItems();
     }
+    
+    
+    //удаление продукта из корзины
+    public static function deleteProduct($id){
+        
+        $productsInCart = self::getProducts();        
+        unset($productsInCart[$id]);        
+        $_SESSION['products'] = $productsInCart;        
+    }
 
     //подсчет количества товаров в корзине (сессия)
     public static function countItems()
     {
+        
         if (isset($_SESSION['products'])) {
+            
             $count = 0;
             foreach ($_SESSION['products'] as $id => $quantity) {
                 $count += $quantity;
             }
             return $count;
+        } else {
+            return 0;
         }
-        return 0;
     }
     
     //получение продуктов из корзины
@@ -46,6 +56,14 @@ class Cart
             return $_SESSION['products'];
         }
         return false;
+    }
+
+    // очистка корзины
+    public static function clear()
+    {
+        if (isset($_SESSION['products'])) {
+            unset($_SESSION['products']);
+        }
     }
     
     //получение общей стоимости товаров

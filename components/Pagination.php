@@ -1,15 +1,11 @@
 <?php
 
-/*
- * Класс для генерации постраничной навигации
- */
-
 class Pagination
 {
 
     /**
      *
-     * @var Ссылок навигации на страницу
+     * @var Ссылки навигации на страницу
      *
      */
     private $max = 10;
@@ -41,13 +37,18 @@ class Pagination
      *
      */
     private $limit;
+    /**
+     * @var float
+     */
+    private $amount;
 
     /**
      * Запуск необходимых данных для навигации
      * @param integer $total - общее количество записей
+     * @param $currentPage
      * @param integer $limit - количество записей на страницу
      *
-     * @return
+     * @param $index
      */
     public function __construct($total, $currentPage, $limit, $index)
     {
@@ -84,7 +85,7 @@ class Pagination
         # Генерируем ссылки
         for ($page = $limits[0]; $page <= $limits[1]; $page++) {
             # Если текущая это текущая страница, ссылки нет и добавляется класс active
-            if ($page == $this->current_page) {
+            if ($page === $this->current_page) {
                 $links .= '<li class="active"><a href="#">' . $page . '</a></li>';
             } else {
                 # Иначе генерируем ссылку
@@ -93,7 +94,7 @@ class Pagination
         }
 
         # Если ссылки создались
-        if (!is_null($links)) {
+        if ($links !== null) {
             # Если текущая страница не первая
             if ($this->current_page > 1)
                 # Создаём ссылку "На первую"
@@ -115,14 +116,17 @@ class Pagination
      * Для генерации HTML-кода ссылки
      * @param integer $page - номер страницы
      *
-     * @return
+     * @param null $text
+     * @return string
      */
     private function generateHtml($page, $text = null)
     {
         # Если текст ссылки не указан
         if (!$text)
             # Указываем, что текст - цифра страницы
+        {
             $text = $page;
+        }
 
         $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
         $currentURI = preg_replace('~/page-[0-9]+~', '', $currentURI);
@@ -134,7 +138,7 @@ class Pagination
     /**
      *  Для получения, откуда стартовать
      *
-     * @return массив с началом и концом отсчёта
+     * @return array
      */
     private function limits()
     {
@@ -157,14 +161,14 @@ class Pagination
         }
 
         # Возвращаем
-        return
-            array($start, $end);
+        return array($start, $end);
     }
 
     /**
      * Для установки текущей страницы
      *
-     * @return
+     * @param $currentPage
+     * @return void
      */
     private function setCurrentPage($currentPage)
     {
@@ -185,7 +189,7 @@ class Pagination
     /**
      * Для получеия общего числа страниц
      *
-     * @return число страниц
+     * @return float
      */
     private function amount()
     {
