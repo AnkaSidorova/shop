@@ -1,11 +1,7 @@
 <?php
 
 return array(
-    
-    // пользователь
-    'user/login' => 'user/login', // actionLogin в UserController
-    'user/logout' => 'user/logout', // actionLogout в UserController 
-    
+       
     // АДМИН-ПАНЕЛЬ
     
     // товары
@@ -13,6 +9,7 @@ return array(
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
     'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',
     'admin/product' => 'adminProduct/index', //actionIndex AdminProductController
+    
     'admin'=>'admin/index', //actionIndex AdminController      
     
     // заказы
@@ -21,7 +18,9 @@ return array(
     //управление админ-панелью
     'admin/admin_panel'=>'adminAdmin_panel/index', //actionIndex AdminAdmin_panelController      
 
-
+    // пользователь
+    'user/login' => 'user/login', // actionLogin в UserController
+    'user/logout' => 'user/logout', // actionLogout в UserController 
 
     // карточка товара  
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController       

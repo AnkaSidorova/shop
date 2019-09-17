@@ -9,12 +9,19 @@ class CartController
         
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location: $referrer");
+        
     }
 
     public function actionDelete($id)
     {
         Cart::deleteProduct($id);
        
+        header('Location: /cart');
+    }
+    
+    public function actionUpdate($id){
+        Cart::deleteProduct($id);
+
         header('Location: /cart');
     }
 

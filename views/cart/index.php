@@ -20,7 +20,9 @@
 							<div class="card mb-3">
 								<div class="row no-gutters">
 									<div class="col-md-4">
-										<img src="/template/img/her.jpg" class="card-img" alt="фото">
+										<a href="/product/<?php echo $product['id'] ?>">
+											<img src="/template/img/her.jpg" class="card-img-top" alt="фото">
+										</a>										
 									</div>
 									<div class="col-md-8">
 										<div class="card-body">

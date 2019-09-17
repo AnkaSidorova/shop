@@ -5,6 +5,9 @@
 		<div class="col">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
+					<a href="/admin/product/create/" class="href_style">Добавить товар</a>
+				</li>
+				<li class="list-group-item">
 					<a href="/admin/" class="text-danger">Вернуться назад</a>
 				</li>
 				<li class="list-group-item">
@@ -39,18 +42,18 @@
 				</thead>
 				<tbody>
         <?php foreach ($productsList as $product): ?>
-				<tr>            
-					<th scope="row"><?php echo $product['id']; ?></th>
-					<td><?php echo $product['name']; ?></td>
-					<td><?php echo $product['code']; ?></td>
-					<td><?php echo $product['price']; ?></td>
-					<td>
-						<a href="/admin/product/delete/<?php echo $product['id'] ?>" class="btn btn-dark">Удалить</a>
-					</td>
-					<td>
-						<a href="/admin/product/update/<?php echo $product['id'] ?>" class="btn btn-dark">Редактировать</a>
-					</td>
-				</tr>
+					<tr>
+						<th scope="row"><?php echo $product['id']; ?></th>
+						<td><?php echo $product['name']; ?></td>
+						<td><?php echo $product['code']; ?></td>
+						<td><?php echo $product['price']; ?></td>
+						<td>
+							<a href="/admin/product/delete/<?php echo $product['id'] ?>" class="btn btn-dark">Удалить</a>
+						</td>
+						<td>
+							<a href="/admin/product/update/<?php echo $product['id'] ?>" class="btn btn-dark">Редактировать</a>
+						</td>
+					</tr>
         <?php endforeach; ?>
 				</tbody>
 			</table>
@@ -59,4 +62,5 @@
 </div>
 
 
-</body></html>
+</body>
+</html>

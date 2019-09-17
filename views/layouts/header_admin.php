@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col">
             <div class="pt-5 text-center">
-                <a href="" class="name_shop">
+                <a href="/admin/" class="name_shop">
                     <img src="/template/img/shopping-bag.png" alt="логотип">
                     <p>D I E S E L</p>
                     <p>admin-panel</p>

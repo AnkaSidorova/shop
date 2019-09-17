@@ -3,11 +3,10 @@
 
 <div class="container">
 	<div class="row">
-		<form method="post">
+		<form action="" method="post">
             <p>Вы действительно хотите удалить этот товар?</p>
-			<input type="submit" name="submit" value="Удалить"/>
+			<input type="submit" class="btn btn-dark" name="submit" value="Удалить"/>
 		</form>
-
 	</div>
 </div>
 
