@@ -2,71 +2,18 @@
 
 class User
 {
-    /**
-     * Регистрация пользователя
-     * @param string $name <p>Имя</p>
-     * @param string $email <p>E-mail</p>
-     * @param string $password <p>Пароль</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
-    public static function register($name, $email, $password)
-    {
-        // Соединение с БД
-        $db = Db::getConnection();
-        
-        // Текст запроса к БД
-        $sql = 'INSERT INTO admin (name, email, password) '
-            . 'VALUES (:name, :email, :password)';
-        
-        // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':email', $email, PDO::PARAM_STR);
-        $result->bindParam(':password', $password, PDO::PARAM_STR);
-        return $result->execute();
-    }
-    /**
-     * Редактирование данных пользователя
-     * @param integer $id <p>id пользователя</p>
-     * @param string $name <p>Имя</p>
-     * @param string $password <p>Пароль</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
-    public static function edit($id, $name, $password)
-    {
-        // Соединение с БД
-        $db = Db::getConnection();
-        // Текст запроса к БД
-        $sql = 'UPDATE admin 
-            SET name = :name, password = :password 
-            WHERE id = :id';
-        // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':password', $password, PDO::PARAM_STR);
-        return $result->execute();
-    }
-    /**
-     * Проверяем существует ли пользователь с заданными $email и $password
-     * @param string $email <p>E-mail</p>
-     * @param string $password <p>Пароль</p>
-     * @return mixed : integer user id or false
-     */
+    
     public static function checkUserData($email, $password)
     {
         // Соединение с БД
         $db = Db::getConnection();
-        
         // Текст запроса к БД
         $sql = 'SELECT * FROM admin WHERE email = :email AND password = :password';
-        
-        // Получение результатов
+        // Получение результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':email', $email, PDO::PARAM_INT);
         $result->bindParam(':password', $password, PDO::PARAM_INT);
         $result->execute();
-        
         // Обращаемся к записи
         $user = $result->fetch();
         if ($user) {
@@ -82,11 +29,7 @@ class User
         $_SESSION['user'] = $userId;
     }
     
-    /**
-     * Возвращает идентификатор пользователя, если он авторизирован.<br/>
-     * Иначе перенаправляет на страницу входа
-     * @return string <p>Идентификатор пользователя</p>
-     */
+    // id пользователя
     public static function checkLogged()
     {       
         if (isset($_SESSION['user'])) {
@@ -95,51 +38,25 @@ class User
         header('Location: /user/login');
     }
     
-    
-    
-    /**
-     * Проверяет является ли пользователь гостем
-     * @return boolean <p>Результат выполнения метода</p>
-     */
-    public static function isGuest()
-    {
-        if (isset($_SESSION['user'])) {
-            return false;
-        }
-        return true;
-    }
-    /**
-     * Проверяет имя: не меньше, чем 2 символа
-     * @param string $name <p>Имя</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
+    // проверка имени
     public static function checkName($name)
     {
         return strlen($name) >= 2;
     }
-    /**
-     * Проверяет телефон: не меньше, чем 10 символов
-     * @param string $phone <p>Телефон</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
+    
+    //проверка телефона
     public static function checkPhone($phone)
     {
         return strlen($phone) >= 10;
     }
-    /**
-     * Проверяет имя: не меньше, чем 6 символов
-     * @param string $password <p>Пароль</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
+    
+    //проверка пароля
     public static function checkPassword($password)
     {
         return strlen($password) >= 2;
     }
-    /**
-     * Проверяет email
-     * @param string $email <p>E-mail</p>
-     * @return boolean <p>Результат выполнения метода</p>
-     */
+   
+    //проверка почты
     public static function checkEmail($email)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {

@@ -8,31 +8,7 @@ class AdminProductController extends AdminBase
         $productsList = Product::getProductsList();
         require_once ROOT . '/views/admin_product/index.php';
         return true;
-    }
-
-    //добавление товара
-    public function actionCreate()
-    {
-        self::checkAdmin();
-
-        if (isset($_POST['submit'])) {
-
-            $options['name'] = $_POST['name'];
-
-            $errors = false;
-
-            if (!isset($options['name']) || empty($options['name'])) {
-                $errors[] = 'Заполните поля';
-            }
-
-            if ($errors === false) {
-                $id = Product::createProduct($options);                    
-                header('Location: /admin/product');
-            }
-        }
-        require_once ROOT . '/views/admin_product/create.php';
-        return true;
-    }
+    }   
 
     //редактирование товара
     public function actionUpdate($id)
@@ -74,6 +50,31 @@ class AdminProductController extends AdminBase
         }
 
         require_once ROOT . '/views/admin_product/delete.php';
+        return true;
+    }
+
+    //добавление товара
+    public function actionCreate()
+    {
+        self::checkAdmin();
+
+        if (isset($_POST['submit'])) {
+
+              $name = $_POST['name'];
+              
+              echo $name;
+//            $options['category_id'] = $_POST['category_id'];
+//            $options['code'] = $_POST['code'];
+//            $options['description'] = $_POST['description'];
+//            $options['price'] = $_POST['price'];
+//            $options['status'] = $_POST['status'];
+//            $options['recommended'] = $_POST['recommended'];
+
+            Product::createProduct($name);
+            header('Location: /admin/product/create');
+        }
+
+        require_once ROOT . '/views/admin_product/create.php';
         return true;
     }
 }

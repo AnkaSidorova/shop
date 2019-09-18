@@ -33,10 +33,9 @@ class Cart
         $_SESSION['products'] = $productsInCart;        
     }
 
-    //подсчет количества товаров в корзине (сессия)
+    //подсчет количества товаров в корзине
     public static function countItems()
-    {
-        
+    {        
         if (isset($_SESSION['products'])) {
             
             $count = 0;

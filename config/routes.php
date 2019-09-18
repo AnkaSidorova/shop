@@ -5,9 +5,9 @@ return array(
     // АДМИН-ПАНЕЛЬ
     
     // товары
-    'admin/product/create' => 'adminProduct/create',
-    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
-    'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',
+    'admin/product/create' => 'adminProduct/create', //actionCreate AdminProductController
+    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1', //actionUpdate AdminProductController
+    'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1', //actionDelete AdminProductController
     'admin/product' => 'adminProduct/index', //actionIndex AdminProductController
     
     'admin'=>'admin/index', //actionIndex AdminController      
@@ -26,7 +26,7 @@ return array(
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController       
     
     // корзина
-    'cart/checkout' => 'cart/checkout', // actionCheckOut в CartController (оформление заказа)
+    'cart/checkout' => 'cart/checkout', // actionCheckout в CartController (оформление заказа)
     'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete в CartController (удаление товара из корзины)
     'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd в CartController (добавление товара в корзину)
     'cart' => 'cart/index', // actionIndex в CartController        

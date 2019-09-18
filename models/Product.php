@@ -159,24 +159,20 @@ class Product
     }
 
     // добавление товара
-    public static function createProduct($options)
+    public static function createProduct($name)
     {
-        
         $db = Db::getConnection();
         
-        $sql = 'INSERT INTO product '
-            . '(name)'
-            . 'VALUES '
-            . '(:name)';
+        echo  $name;
         
+        $sql = 'INSERT INTO product (name) VALUES (:name)';
+
         $result = $db->prepare($sql);
-        $result->bindParam(':name', $options['name']);
+        $result->bindParam(':name', $name);
         
-        if ($result->execute()) {            
-            return $db->lastInsertId();
-        }
-        return 0;
-    }    
+        return $result->execute();
+    }
+
     
     // редактирование товара
     public static function updateProductById($id, $options)
@@ -210,7 +206,6 @@ class Product
     // удаление товара
     public static function deleteProductById($id)
     {
-
         $db = Db::getConnection();
 
         $sql = 'DELETE FROM product WHERE id = :id';

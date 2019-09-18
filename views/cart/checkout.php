@@ -12,7 +12,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<form>
+			<form action="" method="post">
 				<div class="form-row">
 					<div class="col-md-7 mb-3">
 						<label for="validationDefault01">ФИО</label>
@@ -26,7 +26,7 @@
 				<div class="form-row">
 					<div class="col-md-7 mb-3">
 						<label for="validationDefault03">Адрес</label>
-						<input type="text" name="address_user	" class="form-control" id="validationDefault03" placeholder="г.Москва, ул.Бульвар Гагарина 65А" required>
+						<input type="text" name="address_user" class="form-control" id="validationDefault03" placeholder="г.Москва, ул.Бульвар Гагарина 65А" required>
 					</div>
 					<div class="col-md-5 mb-3">
 						<label for="validationDefault04">Телефон</label>
@@ -36,10 +36,10 @@
 				<div class="form-row">
 					<div class="col mb-3">
 						<label for="validationDefault04">Комментарии к заказу</label>
-						<textarea class="form-control" name="komment_user" id="validationDefault04" placeholder="Комментарии"></textarea>
+						<textarea class="form-control" name="comment_user" id="validationDefault04" placeholder="Комментарии"></textarea>
 					</div>
 				</div>
-				<button class="btn btn-dark" type="submit" name="send">Отправить</button>
+				<button class="btn btn-dark" type="submit" name="submit">Отправить</button>
 			</form>				
 		</div>
 	</div>
