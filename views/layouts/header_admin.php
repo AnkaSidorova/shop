@@ -23,7 +23,7 @@
             <div class="pt-5 text-center">
                 <a href="/admin/" class="name_shop">
                     <img src="/template/img/shopping-bag.png" alt="логотип">
-                    <p>D I E S E L</p>
+                    <p>V I N D I E S E L</p>
                     <p>admin-panel</p>
                 </a>
             </div>

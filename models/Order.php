@@ -2,7 +2,7 @@
 
 class Order
 {
-
+    //добавление заказа
     public static function save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $date_order)
     {        
         $db = Db::getConnection();
@@ -21,5 +21,42 @@ class Order
         $result->bindParam(':date_order', $date_order);
         
         return $result->execute();
+    }
+
+    // получение списка товаров
+    public static function getOrdersList()
+    {
+        $db = Db::getConnection();
+        
+        $result = $db->query('SELECT id, name_user, tel_user, email_user, address_user, comment_user, products, date_order  FROM oder_user');
+        $ordersList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $ordersList[$i]['id'] = $row['id'];
+            $ordersList[$i]['name_user'] = $row['name_user'];
+            $ordersList[$i]['tel_user'] = $row['tel_user'];
+            $ordersList[$i]['email_user'] = $row['email_user'];
+            $ordersList[$i]['address_user'] = $row['address_user'];
+            $ordersList[$i]['comment_user'] = $row['comment_user'];
+            $ordersList[$i]['products'] = $row['products'];
+            $ordersList[$i]['date_order'] = $row['date_order'];
+            $i++;
+        }
+        return $ordersList;
+    }
+
+    //получение заказа по id
+    public static function getProductById($id)
+    {
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM oder_user WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch();
     }
 }

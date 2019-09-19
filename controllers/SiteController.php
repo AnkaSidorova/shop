@@ -10,9 +10,6 @@ class SiteController
 
         //для вывода товаров 5 штук последних из бд
         $latestProducts = Product::getLatestProducts(6);
-        
-        //для вывода рекомпендованных товаров 
-        $sliderProducts = Product::getRecommendedProducts();
 
         require_once ROOT . '/views/site/index.php';
 

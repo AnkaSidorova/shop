@@ -20,7 +20,7 @@
 					<a href="/admin/order/" class="href_style">Управление заказами</a>
 				</li>
 				<li class="list-group-item">
-					<a href="/admin/admin_panel/" class="href_style">Админ-панель</a>
+					<a href="/admin/redact/" class="href_style">Админ-панель</a>
 				</li>
 				<li class="list-group-item">
 					<a href="/" class="text-danger">Вернуться на сайт</a>

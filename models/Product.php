@@ -117,29 +117,29 @@ class Product
     }
 
 
-    // рекомендованные товары
-    public static function getRecommendedProducts()
-    {
+    // похожие товары    
+    public static function getRecommendedProducts($id)
+    {        
         $db = Db::getConnection();
 
-        $productsList = [];
-
-        $result = $db->query('SELECT id, name, price, img FROM product '
-            . 'WHERE status = "active" AND recommended = "1"');
-
+        $category = "SELECT category_id FROM product WHERE id = '$id'";
+        
+        $result = $db->query("SELECT id, name, price, img FROM product WHERE recommended = '1' AND category_id = '$category' LIMIT 3");
+        
         $i = 0;
-        while ($row = $result->fetch()) {
+        $productsList = array();
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['img'] = $row['img'];
             $productsList[$i]['price'] = $row['price'];
+            $productsList[$i]['img'] = $row['img'];
             $i++;
         }
-
         return $productsList;
     }
+    
 
-    // полный список товаров
+    // список существующих товаров из бд
     public static function getProductsList()
     {
         $db = Db::getConnection();
@@ -158,28 +158,34 @@ class Product
         return $productsList;
     }
 
-    // добавление товара
-    public static function createProduct($name)
+    //добавление товара
+    public static function createProduct($name, $category_id, $code, $description, $price, $status, $recommended)
     {
         $db = Db::getConnection();
-        
-        echo  $name;
-        
-        $sql = 'INSERT INTO product (name) VALUES (:name)';
+
+
+        $sql = 'INSERT INTO product (name, category_id, code, description, price, status, recommended) '
+            . 'VALUES (:name, :category_id, :code, :description, :price, :status, :recommended)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':name', $name);
-        
+        $result->bindParam(':category_id', $category_id);
+        $result->bindParam(':code', $code);
+        $result->bindParam(':description', $description);
+        $result->bindParam(':price', $price);
+        $result->bindParam(':status', $status);
+        $result->bindParam(':recommended', $recommended);
+
         return $result->execute();
     }
 
-    
+
     // редактирование товара
     public static function updateProductById($id, $options)
     {
-        
+
         $db = Db::getConnection();
-        
+
         $sql = 'UPDATE product
             SET 
                 name = :name, 
@@ -190,7 +196,7 @@ class Product
                 status = :status,
                 recommended = :recommended               
             WHERE id = :id';
-        
+
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
@@ -200,6 +206,7 @@ class Product
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
         $result->bindParam(':recommended', $options['recommended'], PDO::PARAM_INT);
+
         return $result->execute();
     }
 

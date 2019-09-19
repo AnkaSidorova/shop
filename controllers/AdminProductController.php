@@ -3,21 +3,23 @@
 class AdminProductController extends AdminBase
 {
     //просмотр товаров
-    public function actionIndex(){
+    public function actionIndex()
+    {
         self::checkAdmin();
         $productsList = Product::getProductsList();
         require_once ROOT . '/views/admin_product/index.php';
+
         return true;
-    }   
+    }
 
     //редактирование товара
     public function actionUpdate($id)
-    {        
-        self::checkAdmin();        
+    {
+        self::checkAdmin();
         $product = Product::getProductById($id);
-        
+
         if (isset($_POST['submit'])) {
-            
+
             $options['name'] = $_POST['name'];
             $options['category_id'] = $_POST['category_id'];
             $options['code'] = $_POST['code'];
@@ -25,13 +27,14 @@ class AdminProductController extends AdminBase
             $options['price'] = $_POST['price'];
             $options['status'] = $_POST['status'];
             $options['recommended'] = $_POST['recommended'];
-            
+
             Product::updateProductById($id, $options);
-            
+
             header('Location: /admin/product');
         }
-        
+
         require_once ROOT . '/views/admin_product/update.php';
+
         return true;
     }
 
@@ -50,6 +53,7 @@ class AdminProductController extends AdminBase
         }
 
         require_once ROOT . '/views/admin_product/delete.php';
+
         return true;
     }
 
@@ -60,21 +64,20 @@ class AdminProductController extends AdminBase
 
         if (isset($_POST['submit'])) {
 
-              $name = $_POST['name'];
-              
-              echo $name;
-//            $options['category_id'] = $_POST['category_id'];
-//            $options['code'] = $_POST['code'];
-//            $options['description'] = $_POST['description'];
-//            $options['price'] = $_POST['price'];
-//            $options['status'] = $_POST['status'];
-//            $options['recommended'] = $_POST['recommended'];
+            $name = $_POST['name'];
+            $category_id = $_POST['category_id'];
+            $code = $_POST['code'];
+            $description = $_POST['description'];
+            $price = $_POST['price'];
+            $status = $_POST['status'];
+            $recommended = $_POST['recommended'];
 
-            Product::createProduct($name);
-            header('Location: /admin/product/create');
+            Product::createProduct($name, $category_id, $code, $description, $price, $status, $recommended);
+            header('Location: /admin/product');
         }
 
         require_once ROOT . '/views/admin_product/create.php';
+
         return true;
     }
 }

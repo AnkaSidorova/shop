@@ -35,60 +35,51 @@
 	<div class="row pb-3">
 		<div class="col">
 			<form action="" method="post">
+				
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label for="inputName">Название товара</label>
-						<input type="text" class="form-control" id="inputName" placeholder="Платье" name="name">
+						<label for="inputName">Название товара</label> 
+						<input type="text" class="form-control" id="inputName" placeholder="Платье" name="name" required>
+					</div>
+				</div>
+				
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputCode">Артикул</label>
+						<input type="text" class="form-control" id="inputCode" placeholder="123456" name="code" required>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputPrice">Цена</label>
+						<input type="text" class="form-control" id="inputPrice" placeholder="0" name="price" required>
 					</div>
 				</div>
 
-<!--				<div class="form-row">-->
-<!--					<div class="form-group col-md-6">-->
-<!--						<label for="inputCode">Артикул</label>-->
-<!--						<input type="text" class="form-control" id="inputCode" placeholder="123456" name="code" value="" required>-->
-<!--					</div>-->
-<!--					<div class="form-group col-md-6">-->
-<!--						<label for="inputPrice">Цена</label>-->
-<!--						<input type="number" class="form-control" id="inputPrice" placeholder="0" name="price" value="" required>-->
-<!--					</div>-->
-<!--				</div>-->
-<!---->
-<!--				<div class="form-group">-->
-<!--					<label for="validationTextarea">Описание товара</label>-->
-<!--					<textarea class="form-control" id="validationTextarea" placeholder="Текст" name="description"></textarea>-->
-<!--				</div>-->
-<!---->
-<!--				<div class="form-row">-->
-<!--					<div class="form-group col-md-4">-->
-<!--						<label for="inputCategory">Категория</label>-->
-<!--						<select id="inputCategory" class="form-control" name="category_id">-->
-<!--							<option selected>1</option>-->
-<!--							<option>2</option>-->
-<!--							<option>3</option>-->
-<!--						</select>-->
-<!--					</div>-->
-<!--					<div class="form-group col-md-4">-->
-<!--						<label for="inputState">Статус</label>-->
-<!--						<select id="inputState" class="form-control" name="status">-->
-<!--							<option value="1" selected>active</option>-->
-<!--							<option value="0">passive</option>-->
-<!--						</select>-->
-<!--					</div>-->
-<!--					<div class="form-group col-md-4">-->
-<!--						<label for="inputRecommended">Рекомендации</label>-->
-<!--						<select id="inputState" class="form-control" name="recommended">-->
-<!--							<option value="1" selected>да</option>-->
-<!--							<option value="0">нет</option>-->
-<!--						</select>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				-->
-<!--				<div class="form-row">-->
-<!--					<div class="form-group">-->
-<!--						<label for="inputFile">Выберите основное фото товара</label>-->
-<!--						<input type="file" class="form-control-file" id="inputFile" name="img">-->
-<!--					</div>-->
-<!--				</div>-->
+				<div class="form-group">
+					<label for="validationTextarea">Описание товара</label>
+					<input type="text" class="form-control" id="validationTextarea" placeholder="Текст" name="description">
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="inputCategory">Категория</label>
+						<input type="number" class="form-control" id="inputCategory" placeholder="1/2/3" name="category_id" value="" required>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputState">Статус</label>
+						<input type="text" class="form-control" id="inputState" placeholder="active/passive" name="status" value="" required>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputRecommended">Рекомендации</label>
+						<input type="number" class="form-control" id="inputRecommended" placeholder="0/1" name="recommended" value="" required>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group">
+						<label for="inputFile">Выберите основное фото товара</label>
+						<input type="file" class="form-control-file" id="inputFile" name="img">
+					</div>
+				</div>
 				
 				<input type="submit" class="btn btn-dark" name="submit" value="Добавить">
 				

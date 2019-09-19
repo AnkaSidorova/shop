@@ -10,33 +10,26 @@ class UserController
     {
         $email = '';
         $password = '';
-
-        // Обработка формы
+        
         if (isset($_POST['submit'])) {
             
             $email = $_POST['email'];
             $password = $_POST['password'];
             
-            $errors = false;
-            
-            // Валидация полей            
-            if (!User::checkEmail($email)) {
+            $errors = false;            
+              
+            if (!Admin::checkEmail($email)) {
                 $errors[] = 'Неправильный email';
             }
-            if (!User::checkPassword($password)) {
-                $errors[] = 'Пароль не должен быть короче 6-ти символов';
+            if (!Admin::checkPassword($password)) {
+                $errors[] = 'Неправильный пароль';
             }
             
-            
-            // Проверяем существует ли пользователь
-            $userId = User::checkUserData($email, $password);
+            $userId = Admin::checkUserData($email, $password);
             if ($userId === false) {
-                // Если данные неправильные - показываем ошибку
                 $errors[] = 'Неправильные данные для входа на сайт';
             } else {
-                // Если данные правильные, запоминаем пользователя (сессия)
-                User::auth($userId);
-                // Перенаправляем пользователя в закрытую часть - кабинет 
+                Admin::auth($userId);
                 header('Location: /admin/');
             } 
         }
@@ -48,13 +41,8 @@ class UserController
     //удаление сессии
     public function actionLogout()
     {
-        // Стартуем сессию
         session_start();
-
-        // Удаляем информацию о пользователе из сессии
         unset($_SESSION['user']);
-
-        // Перенаправляем пользователя на главную страницу
         header('Location: /');
     }
 }

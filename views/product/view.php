@@ -13,7 +13,7 @@
 			</div>
 			<div class="mb-3"><?php echo $product['price']; ?> руб.</div>
 			<div class="dropdown mb-3">
-				<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
 					Размер
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -21,7 +21,7 @@
 					<a class="dropdown-item" href="#">42-44</a>
 					<a class="dropdown-item" href="#">44-46</a>
 				</div>
-				<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
 					Цвет
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -30,7 +30,7 @@
 					<a class="dropdown-item" href="#">Синий</a>
 				</div>
 			</div>
-			<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark"  data-id="<?php echo $product['id']; ?>">Купить</a>
+			<a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-dark" data-id="<?php echo $product['id']; ?>">Купить</a>
 		</div>
 	</div>
 </div>
@@ -41,54 +41,21 @@
 <!--			<div class="m-b-t text-dark text-center font-weight-bold">ПОХОЖИЕ ТОВАРЫ</div>-->
 <!--			<hr>-->
 <!--			<div class="row">-->
-<!--				--><?php //foreach ($sliderProducts as $product): ?>
 <!--				<div class="card-deck">-->
-<!--					<div class="col-sm-6 col-md-3 mb-4">-->
-<!--						<div class="card">-->
-<!--							<a href="card.php">-->
-<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
-<!--							</a>-->
-<!--							<div class="card-body">-->
-<!--								<h5 class="card-title">--><?php //echo $product['name']; ?><!--</h5>-->
-<!--								<p class="card-text">--><?php //echo $product['price']; ?><!-- руб.</p>-->
+<!--            --><?php //foreach ($sliderProducts as $product): ?>
+<!--							<div class="col-6 col-md-3 col-md-4 mb-4">-->
+<!--								<div class="card">-->
+<!--									<a href="card.php">-->
+<!--										<img src="/template/img/her.jpg" class="card-img-top" alt="">-->
+<!--									</a>-->
+<!--									<div class="card-body">-->
+<!--										<h5 class="card-title">--><?php //echo $product['name']; ?><!--</h5>-->
+<!--										<p class="card-text">--><?php //echo $product['price']; ?><!-- руб.</p>-->
+<!--									</div>-->
+<!--								</div>-->
 <!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="col-sm-6 col-md-3 mb-4">-->
-<!--						<div class="card">-->
-<!--							<a href="card.php">-->
-<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
-<!--							</a>-->
-<!--							<div class="card-body">-->
-<!--								<h5 class="card-title">Платье</h5>-->
-<!--								<p class="card-text">1 200 руб.</p>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="col-sm-6 col-md-3 mb-4">-->
-<!--						<div class="card">-->
-<!--							<a href="card.php">-->
-<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
-<!--							</a>-->
-<!--							<div class="card-body">-->
-<!--								<h5 class="card-title">Платье</h5>-->
-<!--								<p class="card-text">1 200 руб.</p>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="col-sm-6 col-md-3 mb-4">-->
-<!--						<div class="card">-->
-<!--							<a href="card.php">-->
-<!--								<img src="/template/img/his.jpg" class="card-img-top" alt="">-->
-<!--							</a>-->
-<!--							<div class="card-body">-->
-<!--								<h5 class="card-title">Платье</h5>-->
-<!--								<p class="card-text">1 200 руб.</p>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
+<!--            --><?php //endforeach; ?>
 <!--				</div>-->
-<!--				--><?php //endforeach; ?>
 <!--			</div>-->
 <!--		</div>-->
 <!--	</div>-->

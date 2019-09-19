@@ -24,10 +24,7 @@ class CatalogController
         //для вывода товаров по данной категории
         $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
         
-        $total = Product::getTotalProductsInCategory($categoryId);
-        
-        //создаем обьект Pagination
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, '');
+        $total = Product::getTotalProductsInCategory($categoryId);        
 
         require_once ROOT . '/views/catalog/category.php';
         return true;

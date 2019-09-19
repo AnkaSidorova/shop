@@ -39,8 +39,12 @@
 						<textarea class="form-control" name="comment_user" id="validationDefault04" placeholder="Комментарии"></textarea>
 					</div>
 				</div>
-				<button class="btn btn-dark" type="submit" name="submit">Отправить</button>
-			</form>				
+				<div class="form-row">
+					<p class="col-3 col-md-1">Сумма:</p>
+					<p class="col-9 col-md-11"><?php echo $totalPrice . ' руб.' ?></p>
+				</div>
+				<button class="btn btn-dark" type="submit" name="submit">Оформить</button>
+			</form>
 		</div>
 	</div>
 </div>

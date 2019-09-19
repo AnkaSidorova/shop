@@ -4,6 +4,16 @@ return array(
        
     // АДМИН-ПАНЕЛЬ
     
+    // админы
+    'admin/redact/create' => 'admin/create', //actionCreate AdminController
+    'admin/redact/update/([0-9]+)' => 'admin/update/$1', //actionUpdate AdminController
+    'admin/redact/delete/([0-9]+)' => 'admin/delete/$1', //actionDelete AdminController
+    'admin/redact'=>'admin/redact', //actionRedact AdminController   
+
+    // заказы
+    'admin/order/more/([0-9]+)' => 'adminOrder/more/$1', //actionMore AdminOrderController
+    'admin/order' => 'adminOrder/index', //actionIndex AdminOrderController
+    
     // товары
     'admin/product/create' => 'adminProduct/create', //actionCreate AdminProductController
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1', //actionUpdate AdminProductController
@@ -12,8 +22,7 @@ return array(
     
     'admin'=>'admin/index', //actionIndex AdminController      
     
-    // заказы
-    'admin/order' => 'adminOrder/index', //actionIndex AdminOrderController
+    
     
     //управление админ-панелью
     'admin/admin_panel'=>'adminAdmin_panel/index', //actionIndex AdminAdmin_panelController      

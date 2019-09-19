@@ -16,6 +16,16 @@ class CartController
         $categories = Category::getCategoriesList();
         
         $productsInCart = Cart::getProducts();
+
+        if ($productsInCart) {
+
+            $productsIds = array_keys($productsInCart);
+            $products = Product::getProductsByIds($productsIds);
+
+            $totalPrice = Cart::getTotalPrice($products);
+        }
+        
+        $productsInCart = Cart::getProducts();
         
         if ($productsInCart === false) {
             header('Location: /');
@@ -39,10 +49,10 @@ class CartController
             
             $errors = false;
             
-            if (!User::checkName($name_user)) {
+            if (!Admin::checkName($name_user)) {
                 $errors[] = 'Неправильное имя';
             }
-            if (!User::checkPhone($tel_user)) {
+            if (!Admin::checkPhone($tel_user)) {
                 $errors[] = 'Неправильный телефон';
             }
             
