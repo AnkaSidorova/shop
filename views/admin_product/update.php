@@ -64,12 +64,18 @@
 					</div>
 				</div>
 
-<!--				<div class="form-row">-->
-<!--					<div class="form-group">-->
-<!--						<label for="inputFile">Выберите основное фото товара</label>-->
-<!--						<input type="file" class="form-control-file" id="inputFile" name="img">-->
-<!--					</div>-->
-<!--				</div>-->
+				<div class="form-row">
+					<div class="form-group col">
+						<img src="<?php echo Product::getImage($product['id']); ?>" width="200" alt=""/>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group">
+						<label for="inputFile">Выберите основное фото товара</label>
+						<input type="file" name="img" class="form-control-file" id="inputFile">
+					</div>
+				</div>
+
 				<input type="submit" class="btn btn-dark" name="submit" value="Обновить">
 
 			</form>
@@ -77,5 +83,4 @@
 	</div>
 </div>
 
-</body>
-</html>
+</body></html>

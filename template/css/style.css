@@ -77,6 +77,9 @@ form {
     font-size: 12px;
 }
 
+
+
+
 @media (min-width: 992px) {
     .carousel_height {
         overflow: hidden;
@@ -84,7 +87,16 @@ form {
     }
 
     .card-img-top {
-        height: 200px;
+        height: 300px;        
+    }
+
+    .card-img-slider{
+        height: 350px;
+    }
+
+    .card-img-cart{
+        height: 300px;
+        width: 200px;
     }
 }
 
@@ -95,7 +107,16 @@ form {
     }
 
     .card-img-top {
-        height: 150px;
+        height: 250px;
+    }
+
+    .card-img-slider{
+        height: 350px;
+    }
+
+    .card-img-cart{
+        height: 250px;
+        width: 150px;
     }
 }
 
@@ -107,6 +128,11 @@ form {
     }
 
     .card-img-top {
-        height: 150px;
+        height: 200px;
+    }
+
+    .card-img-cart{
+        height: 300px;
+        width: 100%;
     }
 }

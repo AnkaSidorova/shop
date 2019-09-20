@@ -53,7 +53,7 @@ class AdminController extends AdminBase
             $email = $_POST['email'];
             $role = $_POST['role'];
             $password = $_POST['password'];
-
+            
             Admin::createAdmin($name, $email, $role, $password);
             header('Location: /admin/redact');
         }

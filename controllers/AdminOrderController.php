@@ -2,7 +2,7 @@
 
 class AdminOrderController extends AdminBase
 {
-    //просмотр товаров
+    //просмотр заказа
     public function actionIndex()
     {
         self::checkAdmin();
@@ -12,14 +12,13 @@ class AdminOrderController extends AdminBase
         return true;
     }
 
-    // подробнее о товаре
+    // подробнее о заказе
     public function actionMore($id)
     {
         self::checkAdmin();
-        $order= Order::getProductById($id);       
-
+        $order = Order::getOrderById($id);
         require_once ROOT . '/views/admin_order/more.php';
+
         return true;
     }
-
 }

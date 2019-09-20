@@ -60,7 +60,13 @@
 				<div class="form-group row">
 					<label for="validationProducts" class="col-3 col-form-label">Товары:</label>
 					<div class="col-8">
-                        <textarea  readonly class="form-control-plaintext" id="validationProducts"><?php echo $order['products']; ?></textarea>
+						<textarea  readonly class="form-control-plaintext" id="validationProducts"><?php echo $order['products']; ?></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="validationAmount" class="col-3 col-form-label">Сумма:</label>
+					<div class="col-8">
+						<textarea  readonly class="form-control-plaintext" id="validationAmount"><?php echo $order['amount'] . ' руб.' ?></textarea>
 					</div>
 				</div>
 				<div class="form-group row">

@@ -27,8 +27,12 @@ class AdminProductController extends AdminBase
             $options['price'] = $_POST['price'];
             $options['status'] = $_POST['status'];
             $options['recommended'] = $_POST['recommended'];
+            
+            
+            if (Product::updateProductById($id, $options) && is_uploaded_file($_FILES['img']['tmp_name'])) {
 
-            Product::updateProductById($id, $options);
+                move_uploaded_file($_FILES['img']['tmp_name'], ROOT . "/upload/images/products/$id.jpg");
+            }
 
             header('Location: /admin/product');
         }
@@ -72,7 +76,17 @@ class AdminProductController extends AdminBase
             $status = $_POST['status'];
             $recommended = $_POST['recommended'];
 
-            Product::createProduct($name, $category_id, $code, $description, $price, $status, $recommended);
+            $id = Product::createProduct($name, $category_id, $code, $description, $price, $status, $recommended);
+            
+            print_r($id);
+
+            if ($id) {
+                
+                if (is_uploaded_file($_FILES['img']['tmp_name'])) {
+                    
+                    move_uploaded_file($_FILES['img']['tmp_name'], ROOT . "/upload/images/products/$id.jpg");
+                }
+            }
             header('Location: /admin/product');
         }
 

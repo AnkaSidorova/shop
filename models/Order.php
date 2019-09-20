@@ -3,14 +3,14 @@
 class Order
 {
     //добавление заказа
-    public static function save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $date_order)
-    {        
+    public static function save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $amount, $date_order)
+    {
         $db = Db::getConnection();
-        
-        $sql = 'INSERT INTO oder_user (name_user, tel_user, email_user, address_user, comment_user, products, date_order) '
-            . 'VALUES (:name_user, :tel_user, :email_user, :address_user, :comment_user, :user_products, :date_order)';
-        
-       
+
+        $sql = 'INSERT INTO oder_user (name_user, tel_user, email_user, address_user, comment_user, products, amount, date_order) '
+            . 'VALUES (:name_user, :tel_user, :email_user, :address_user, :comment_user, :user_products, :amount, :date_order)';
+
+
         $result = $db->prepare($sql);
         $result->bindParam(':name_user', $name_user);
         $result->bindParam(':tel_user', $tel_user);
@@ -18,8 +18,9 @@ class Order
         $result->bindParam(':address_user', $address_user);
         $result->bindParam(':comment_user', $comment_user);
         $result->bindParam(':user_products', $user_products);
+        $result->bindParam(':amount', $amount);
         $result->bindParam(':date_order', $date_order);
-        
+
         return $result->execute();
     }
 
@@ -27,8 +28,8 @@ class Order
     public static function getOrdersList()
     {
         $db = Db::getConnection();
-        
-        $result = $db->query('SELECT id, name_user, tel_user, email_user, address_user, comment_user, products, date_order  FROM oder_user');
+
+        $result = $db->query('SELECT id, name_user, tel_user, email_user, address_user, comment_user, products, date_order  FROM oder_user ORDER BY id ASC');
         $ordersList = array();
         $i = 0;
         while ($row = $result->fetch()) {
@@ -46,7 +47,7 @@ class Order
     }
 
     //получение заказа по id
-    public static function getProductById($id)
+    public static function getOrderById($id)
     {
         $db = Db::getConnection();
 

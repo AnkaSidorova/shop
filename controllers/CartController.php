@@ -5,16 +5,16 @@ class CartController
     //добавление товара в корзину и редирект пользователя    
     public function actionAdd($id)
     {
-        Cart::addProduct($id);        
+        Cart::addProduct($id);
         $referrer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referrer");        
+        header("Location: $referrer");
     }
-    
+
     //оформление заказа
     public function actionCheckout()
     {
         $categories = Category::getCategoriesList();
-        
+
         $productsInCart = Cart::getProducts();
 
         if ($productsInCart) {
@@ -24,19 +24,19 @@ class CartController
 
             $totalPrice = Cart::getTotalPrice($products);
         }
-        
+
         $productsInCart = Cart::getProducts();
-        
+
         if ($productsInCart === false) {
             header('Location: /');
-        }               
-        
-        
+        }
+
+
         $productsIds = array_keys($productsInCart);
-        $products = Product::getProductsByIds($productsIds);  
-                
-        $result = false;                
-        
+        $products = Product::getProductsByIds($productsIds);
+
+        $result = false;
+
         if (isset($_POST['submit'])) {
             $name_user = $_POST['name_user'];
             $tel_user = $_POST['tel_user'];
@@ -45,63 +45,64 @@ class CartController
             $comment_user = $_POST['comment_user'];
             $user_products = json_encode($products);
             $date_order = date('d.m.y');
-            
-            
+            $amount = $totalPrice;
+
+
             $errors = false;
-            
+
             if (!Admin::checkName($name_user)) {
                 $errors[] = 'Неправильное имя';
             }
             if (!Admin::checkPhone($tel_user)) {
                 $errors[] = 'Неправильный телефон';
             }
-            
-            
+
+
             if ($errors === false) {
-                
-                $result = Order::save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $date_order);  
-                                
+
+                $result = Order::save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $amount, $date_order);
+
                 if ($result) {
-                    
-                    //отправка письма на почту админу
-                    
+
+
                     Cart::clear();
                     header('Location: /cart/');
                 }
             }
         }
-        
+
         require_once ROOT . '/views/cart/checkout.php';
+
         return true;
-    }    
-    
+    }
 
 
     //удаление товара
     public function actionDelete($id)
     {
-        Cart::deleteProduct($id);       
+        Cart::deleteProduct($id);
         header('Location: /cart');
-    }   
-    
+    }
+
 
     //получение данных из корзины, получение id товара, получение общей стоимости   
     public function actionIndex()
     {
-        $categories = Category::getCategoriesList();      
+        $categories = Category::getCategoriesList();
 
         $productsInCart = Cart::getProducts();
 
         if ($productsInCart) {
-            
-            $productsIds = array_keys($productsInCart);            
+
+            $productsIds = array_keys($productsInCart);
             $products = Product::getProductsByIds($productsIds);
-            
+
             $totalPrice = Cart::getTotalPrice($products);
         }
 
         require_once ROOT . '/views/cart/index.php';
+
         return true;
-    }    
-    
+    }
+
 }

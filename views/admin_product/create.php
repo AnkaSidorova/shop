@@ -34,7 +34,7 @@
 <div class="container">
 	<div class="row pb-3">
 		<div class="col">
-			<form action="" method="post">
+			<form action="" method="post" enctype="multipart/form-data">
 				
 				<div class="form-row">
 					<div class="form-group col-md-12">
@@ -77,7 +77,7 @@
 				<div class="form-row">
 					<div class="form-group">
 						<label for="inputFile">Выберите основное фото товара</label>
-						<input type="file" class="form-control-file" id="inputFile" name="img">
+						<input type="file" name="img" class="form-control-file" id="inputFile">
 					</div>
 				</div>
 				

@@ -12,7 +12,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<form action="" method="post">
+			<form action="" method="post" id="form">
 				<div class="form-row">
 					<div class="col-md-7 mb-3">
 						<label for="validationDefault01">ФИО</label>
@@ -48,6 +48,30 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  $(function () {
+    'use strict';
+    $('#form').on('submit', function (e) {
+      e.preventDefault();
+      let fd = new FormData(this);
+      $.ajax({
+        url: 'send.php',
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: fd,
+        success: function (msg) {
+          if (msg === 'ok') {
+            alert('Отправлено');
+          } else {
+            alert('Ошибка');
+          }
+        }
+      });
+    });
+  });
+</script>
 
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

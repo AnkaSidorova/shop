@@ -144,7 +144,7 @@ class Product
     {
         $db = Db::getConnection();
 
-        $result = $db->query('SELECT id, name, code, price FROM product');
+        $result = $db->query('SELECT id, name, code, price FROM product ORDER BY id ASC');
         $productsList = [];
         $i = 0;
         while ($row = $result->fetch()) {
@@ -176,7 +176,10 @@ class Product
         $result->bindParam(':status', $status);
         $result->bindParam(':recommended', $recommended);
 
-        return $result->execute();
+        if ($result->execute()) {            
+            return $db->lastInsertId();
+        }
+        return 0;
     }
 
 
@@ -221,5 +224,21 @@ class Product
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $result->execute();
+    }
+
+    // работа с изображениями
+    public static function getImage($id)
+    {
+        $noImage = 'no-image.jpg';
+        
+        $path = '/upload/images/products/';
+
+        $pathToProductImage = $path . $id . '.jpg';
+        if (file_exists(ROOT.$pathToProductImage)) {
+            
+            return $pathToProductImage;
+        }
+        
+        return $path . $noImage;
     }
 }
