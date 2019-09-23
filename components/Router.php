@@ -55,6 +55,8 @@ class Router
                 $controllerObject = new $controllerName;
 
 
+//                $controllerObject->$actionName(...$parameters);
+                
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
 

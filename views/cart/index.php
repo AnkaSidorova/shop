@@ -21,7 +21,7 @@
 								<div class="row no-gutters">
 									<div class="col-md-4">
 										<a href="/product/<?php echo $product['id'] ?>">
-											<img src="<?php echo Product::getImage($product['id']); ?>" class="card-img-cart" alt="фото" />
+											<img src="<?php echo Product::getImage($product['id']); ?>" class="card-img-cart" alt="фото"/>
 										</a>
 									</div>
 									<div class="col-md-8">

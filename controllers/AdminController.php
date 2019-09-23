@@ -31,8 +31,9 @@ class AdminController extends AdminBase
         if (isset($_POST['submit'])) {
 
             $password = $_POST['password'];
+            $hash = md5($password);
 
-            Admin::updateAdminById($id, $password);
+            Admin::updateAdminById($id, $hash);
 
             header('Location: /admin/redact');
         }
@@ -54,7 +55,9 @@ class AdminController extends AdminBase
             $role = $_POST['role'];
             $password = $_POST['password'];
             
-            Admin::createAdmin($name, $email, $role, $password);
+            $hash = md5($password);
+            
+            Admin::createAdmin($name, $email, $role, $hash);
             header('Location: /admin/redact');
         }
         require_once ROOT . '/views/admin/create.php';

@@ -12,6 +12,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
 </head>
 <body>
 
@@ -26,7 +27,7 @@
 			<div class="pt-5 text-center">
 				<a href="/" class="name_shop">
 					<img src="/template/img/shopping-bag.png" alt="логотип">
-					<p>V I N D I E S E L</p>
+					<p>D I E S E L</p>
 				</a>
 			</div>
 		</div>
@@ -51,7 +52,7 @@
 					<a class="nav-link href_style" href="/catalog/">Каталог</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link href_style" href="/delivery/">Доставка</a>
+					<a class="nav-link href_style" href="#">Доставка</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link href_style" href="#">Контакты</a>

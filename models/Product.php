@@ -2,7 +2,7 @@
 
 class Product
 {
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 4;
 
     //получение последних товаров из бд
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
@@ -115,24 +115,24 @@ class Product
 
         return $products;
     }
+    
 
 
     // похожие товары    
-    public static function getRecommendedProducts($id)
+    public static function getRecommendedProducts($product)
     {        
         $db = Db::getConnection();
 
-        $category = "SELECT category_id FROM product WHERE id = '$id'";
+        $result = $db->query('SELECT id, name, price FROM product WHERE category_id = "' . $product['category_id'] .'" AND recommended="1" Limit 3');
         
-        $result = $db->query("SELECT id, name, price, img FROM product WHERE recommended = '1' AND category_id = '$category' LIMIT 3");
         
         $i = 0;
         $productsList = array();
+        
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['img'] = $row['img'];
             $i++;
         }
         return $productsList;

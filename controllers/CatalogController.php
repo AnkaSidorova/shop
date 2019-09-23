@@ -8,8 +8,8 @@ class CatalogController
         //для вывода категорий товаров
         $categories = Category::getCategoriesList();
 
-        //для вывода товаров 9 штук последних из бд
-        $latestProducts = Product::getLatestProducts(9);
+        //для вывода товаров 8 штук последних из бд
+        $latestProducts = Product::getLatestProducts(8);
 
         require_once ROOT . '/views/catalog/index.php';
 

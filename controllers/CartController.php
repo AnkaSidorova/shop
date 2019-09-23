@@ -44,7 +44,7 @@ class CartController
             $address_user = $_POST['address_user'];
             $comment_user = $_POST['comment_user'];
             $user_products = json_encode($products);
-            $date_order = date('d.m.y');
+            $date_order = date('Y-m-d');
             $amount = $totalPrice;
 
 
@@ -63,8 +63,7 @@ class CartController
                 $result = Order::save($name_user, $tel_user, $email_user, $address_user, $comment_user, $user_products, $amount, $date_order);
 
                 if ($result) {
-
-
+                    
                     Cart::clear();
                     header('Location: /cart/');
                 }
@@ -72,6 +71,12 @@ class CartController
         }
 
         require_once ROOT . '/views/cart/checkout.php';
+
+        return true;
+    }
+    
+    public function actionSend(){
+        require_once ROOT . '/mailer/send.php';
 
         return true;
     }

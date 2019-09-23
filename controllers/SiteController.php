@@ -8,7 +8,7 @@ class SiteController
         //для вывода категорий товаров
         $categories = Category::getCategoriesList();
 
-        //для вывода товаров 5 штук последних из бд
+        //для вывода товаров 6 штук последних из бд
         $latestProducts = Product::getLatestProducts(6);
 
         require_once ROOT . '/views/site/index.php';

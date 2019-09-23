@@ -4,7 +4,7 @@ class Admin
 {
 
     //добавление администратора
-    public static function createAdmin($name, $email, $role, $password)
+    public static function createAdmin($name, $email, $role, $hash)
     {
         $db = Db::getConnection();
 
@@ -14,7 +14,7 @@ class Admin
 
         $result = $db->prepare($sql);
         $result->bindParam(':email', $email);
-        $result->bindParam(':password', $password);
+        $result->bindParam(':password', $hash);
         $result->bindParam(':name', $name);
         $result->bindParam(':role', $role);
 
@@ -31,7 +31,7 @@ class Admin
 
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id);
-        $result->bindParam(':password', $password);
+        $result->bindParam(':password', $hash);
         return $result->execute();
     }
     
@@ -56,7 +56,7 @@ class Admin
         return $adminList;
     }
     
-    public static function checkUserData($email, $password)
+    public static function checkUserData($email, $hash)
     {        
         $db = Db::getConnection();
         
@@ -64,7 +64,7 @@ class Admin
         
         $result = $db->prepare($sql);
         $result->bindParam(':email', $email, PDO::PARAM_INT);
-        $result->bindParam(':password', $password, PDO::PARAM_INT);
+        $result->bindParam(':password', $hash, PDO::PARAM_INT);
         $result->execute();
         
         $user = $result->fetch();

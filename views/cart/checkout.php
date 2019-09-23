@@ -39,39 +39,39 @@
 						<textarea class="form-control" name="comment_user" id="validationDefault04" placeholder="Комментарии"></textarea>
 					</div>
 				</div>
-				<div class="form-row">
-					<p class="col-3 col-md-1">Сумма:</p>
-					<p class="col-9 col-md-11"><?php echo $totalPrice . ' руб.' ?></p>
-				</div>
-				<button class="btn btn-dark" type="submit" name="submit">Оформить</button>
+
+				<div class="form-group row">
+					<label for="price" class="col-3 col-md-1 col-form-label">Сумма:</label>
+					<div class="col-9 col-md-11">
+						<input type="text" readonly name="price" class="form-control-plaintext" id="price" value="<?php echo $totalPrice . ' руб.' ?>">
+					</div>
+				</div>			
+				
+				<button class="btn btn-dark" type="submit" name="submit" id="addOrder">Оформить</button>
 			</form>
 		</div>
 	</div>
 </div>
 
+<?php include ROOT . '/views/layouts/footer.php'; ?>
+
+
 <script>
+  $('#form').trigger('reset');
   $(function () {
     'use strict';
-    $('#form').on('submit', function (e) {
-      e.preventDefault();
-      let fd = new FormData(this);
+    $('#form').on('submit', function () {
+      let formData = $('#form').serialize();
       $.ajax({
-        url: 'send.php',
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        data: fd,
-        success: function (msg) {
-          if (msg === 'ok') {
-            alert('Отправлено');
-          } else {
-            alert('Ошибка');
-          }
+        url: "/cart/send/",
+        type: "POST",
+        data: formData,
+        success: function (formData) {
+          console.log(formData);
+          alert('Ваш заказ отправлен! Ожидайте письма на вашу почту!');
         }
       });
     });
   });
 </script>
 
-
-<?php include ROOT . '/views/layouts/footer.php'; ?>

@@ -35,6 +35,8 @@ return array(
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController       
     
     // корзина
+
+    'cart/send' => 'cart/send', // actionSend в CartController 
     'cart/checkout' => 'cart/checkout', // actionCheckout в CartController (оформление заказа)
     'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete в CartController (удаление товара из корзины)
     'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd в CartController (добавление товара в корзину)
@@ -48,5 +50,5 @@ return array(
     'catalog'=>'catalog/index', //actionIndex CatalogController  
     
     // главная страница
-    '' => 'site/index', // actionIndex в SiteController
+    '^$' => 'site/index', // actionIndex в SiteController
 );
